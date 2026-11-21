@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spot the Difference — Harbour Lights</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div class="hud-title">
+      <h1>Spot the Difference</h1>
+      <p id="levelName">Harbour at Sunset</p>
+    </div>
+    <div class="hud-stats">
+      <div class="stat"><span class="stat-label">Found</span><span id="counter" class="stat-value">0 of 7</span></div>
+      <div class="stat"><span class="stat-label">Time</span><span id="timer" class="stat-value">0:00</span></div>
+      <div class="stat"><span class="stat-label">Accuracy</span><span id="accuracy" class="stat-value">100%</span></div>
+    </div>
+  </header>
+
+  <main id="boards">
+    <figure class="panel">
+      <canvas id="leftCanvas" width="560" height="560" aria-label="Original picture"></canvas>
+      <figcaption>Original</figcaption>
+    </figure>
+    <figure class="panel">
+      <canvas id="rightCanvas" width="560" height="560" aria-label="Changed picture"></canvas>
+      <figcaption>Changed</figcaption>
+    </figure>
+  </main>
+
+  <footer id="controls">
+    <p id="message" role="status">Find all 7 differences. Click on either picture — or press H for a hint.</p>
+    <div class="buttons">
+      <button id="hintBtn" type="button">Hint (<span id="hintsLeft">3</span> left)</button>
+      <button id="restartBtn" type="button">Restart level</button>
+      <button id="menuBtn" type="button">Levels</button>
+      <button id="soundBtn" type="button">Sound: on</button>
+    </div>
+  </footer>
+
+  <div id="menuOverlay" class="overlay">
+    <div class="card">
+      <h2>Spot the Difference</h2>
+      <p class="tagline">Three hand-drawn scenes. Seven sneaky changes in each.<br>How sharp are your eyes?</p>
+      <ol class="howto">
+        <li>Two pictures sit side by side — they look the same, but they are not.</li>
+        <li>Click a difference on either picture to circle it.</li>
+        <li>A wrong click costs 5 seconds. Stuck? A hint circles one for you (3 per level).</li>
+        <li>Find all 7 to finish the level. Clear all three levels to win.</li>
+      </ol>
+      <div class="level-cards">
+        <button class="level-card" type="button" data-level="0">
+          <span class="level-num">Level 1</span>
+          <span class="level-title">Harbour at Sunset</span>
+          <span class="level-diff">Gentle · 7 differences</span>
+        </button>
+        <button class="level-card" type="button" data-level="1">
+          <span class="level-num">Level 2</span>
+          <span class="level-title">The Old Bookshop</span>
+          <span class="level-diff">Trickier · 7 differences</span>
+        </button>
+        <button class="level-card" type="button" data-level="2">
+          <span class="level-num">Level 3</span>
+          <span class="level-title">Night Market</span>
+          <span class="level-diff">Hardest · 7 differences</span>
+        </button>
+      </div>
+      <p class="keys">Keyboard: H hint · R restart · M sound · Esc levels · 1 / 2 / 3 pick a level</p>
+    </div>
+  </div>
+
+  <div id="levelOverlay" class="overlay hidden">
+    <div class="card">
+      <h2 id="levelDoneTitle">Level complete!</h2>
+      <p id="levelDoneStars" class="stars">★★★</p>
+      <p id="levelDoneText" class="result-text"></p>
+      <div class="buttons center">
+        <button id="nextBtn" type="button">Next level</button>
+        <button id="replayBtn" type="button">Play again</button>
+        <button id="levelsBtn2" type="button">Levels</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="resultsOverlay" class="overlay hidden">
+    <div class="card">
+      <h2>All levels complete!</h2>
+      <p class="stars">★★★</p>
+      <p id="resultsText" class="result-text"></p>
+      <div class="buttons center">
+        <button id="againBtn" type="button">Play again</button>
+        <button id="levelsBtn3" type="button">Levels</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
